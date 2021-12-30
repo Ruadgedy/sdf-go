@@ -1,0 +1,32 @@
+File ../source/cardfunc.c; Line 1310 # DTCSP_Init: Open Device 0; ErrCode 0xe903.
+File ../source/cardfunc.c; Line 1310 # DTCSP_Init: Open Device 0; ErrCode 0xe903.
+File ../source/cardfunc.c; Line 1310 # DTCSP_Init: Open Device 0; ErrCode 0xe903.
+File ../source/cardfunc.c; Line 12006 # DTCSP_GenerateTrueRandData: Dialog GEN_RANDOM_NUMBER; Card 0; ErrCode 0xe001.
+File ../source/cardfunc.c; Line 12006 # DTCSP_GenerateTrueRandData: Dialog GEN_RANDOM_NUMBER; Card 0; ErrCode 0xe001.
+File ../source/cardfunc.c; Line 12006 # DTCSP_GenerateTrueRandData: Dialog GEN_RANDOM_NUMBER; Card 0; ErrCode 0xe001.
+File ../source/cardfunc.c; Line 12006 # DTCSP_GenerateTrueRandData: Dialog GEN_RANDOM_NUMBER; Card 0; ErrCode 0xe001.
+File ../source/cardfunc.c; Line 12006 # DTCSP_GenerateTrueRandData: Dialog GEN_RANDOM_NUMBER; Card 0; ErrCode 0xe001.
+Time -- Wed Dec 29 18:09:29 2021
+  File: ../source/ECC.c; Line: 436 
+DTCSP_ECC_GenKeyPair:Dialog GEN_ECC_PAIR_H Card 0; ErrCode 0xe001.
+
+Time -- Thu Dec 30 09:58:25 2021
+  File: ../source/ECC.c; Line: 436 
+DTCSP_ECC_GenKeyPair:Dialog GEN_ECC_PAIR_H Card 0; ErrCode 0xe001.
+
+Time -- Thu Dec 30 10:04:41 2021
+  File: ../source/ECC.c; Line: 436 
+DTCSP_ECC_GenKeyPair:Dialog GEN_ECC_PAIR_H Card 0; ErrCode 0xe001.
+
+Time -- Thu Dec 30 10:06:08 2021
+  File: ../source/ECC.c; Line: 436 
+DTCSP_ECC_GenKeyPair:Dialog GEN_ECC_PAIR_H Card 0; ErrCode 0xe001.
+
+File ../source/cardfunc.c; Line 12006 # DTCSP_GenerateTrueRandData: Dialog GEN_RANDOM_NUMBER; Card 0; ErrCode 0xe001.
+File ../source/cardfunc.c; Line 12006 # DTCSP_GenerateTrueRandData: Dialog GEN_RANDOM_NUMBER; Card 0; ErrCode 0xe001.
+File ../source/cardfunc.c; Line 12006 # DTCSP_GenerateTrueRandData: Dialog GEN_RANDOM_NUMBER; Card 0; ErrCode 0xe001.
+File ../source/cardfunc.c; Line 12006 # DTCSP_GenerateTrueRandData: Dialog GEN_RANDOM_NUMBER; Card 0; ErrCode 0xe001.
+Time -- Thu Dec 30 15:18:16 2021
+  File: ../source/ECC.c; Line: 436 
+DTCSP_ECC_GenKeyPair:Dialog GEN_ECC_PAIR_H Card 0; ErrCode 0xe001.
+
