@@ -6,13 +6,12 @@ import (
 )
 
 var Cx = Ctx{}
-var deviceHandle DeviceHandleType
-var sessionHandle SessionHandleType
+var GlobalDevice DeviceHandleType
 var err error
 
 // init initializes the device handle
 func init()  {
-	deviceHandle,err = Cx.SDFOpenDevice()
+	GlobalDevice,err = Cx.SDFOpenDevice()
 	if err != nil {
 		fmt.Println("Open SDF device failed: ", err)
 		os.Exit(1)
