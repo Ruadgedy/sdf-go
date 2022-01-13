@@ -1,6 +1,7 @@
 package sdf_go
 
 import (
+	"crypto/rand"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"os"
 	"testing"
@@ -150,4 +151,30 @@ func TestGenerateKeyPair_ECC(t *testing.T) {
 	t.Log("privateKey:")
 	t.Logf("Bits: %d", priv.Bits)
 	t.Logf("D: %v", []byte(priv.K))
+}
+
+func TestHash(t *testing.T) {
+	size := 1024
+	origin := make([]byte, size)
+	rand.Read(origin)
+
+	_, _, err := ctx.SDFGenerateKeyPair_ECC(sessionHandle, SGD_SM2_1, 256)
+	DoErr(t,err)
+
+	_, err = ctx.SDFHashInit(sessionHandle, SGD_SM3, nil, 0)
+	DoErr(t,err)
+
+	err = ctx.SDFHashUpdate(sessionHandle, origin, uint(size))
+	DoErr(t,err)
+
+	sum, sumLength, err := ctx.SDFHashFinal(sessionHandle)
+	DoErr(t,err)
+	t.Logf("Sum: %v\n",sum)
+	t.Logf("Sum length: %d\n",sumLength)
+}
+
+func DoErr(t *testing.T, err error) {
+	if err != nil {
+		t.Fatal(err)
+	}
 }

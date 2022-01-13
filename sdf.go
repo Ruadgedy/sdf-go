@@ -293,6 +293,7 @@ SGD_RV SDFHashUpdate(SGD_HANDLE hSessionHandle,SGD_UCHAR_PRT pucData,SGD_UINT32 
 //45. 杂凑运算结束
 SGD_RV SDFHashFinal(SGD_HANDLE hSessionHandle,SGD_UCHAR_PRT *pucHash,SGD_UINT32  *puiHashLength)
 {
+	*puiHashLength = 32;
 	*pucHash = calloc(*puiHashLength, sizeof(SGD_UCHAR));
 	return SDF_HashFinal(hSessionHandle, *pucHash, puiHashLength);
 }
