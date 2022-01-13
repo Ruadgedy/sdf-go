@@ -125,7 +125,7 @@ func ConvertToECCrefPrivateKeyC(privateKey ECCrefPrivateKey) (pucPrivateKey C.EC
 func ConvertToECCrefPrivateKeyGo(pucPrivateKey C.ECCrefPrivateKey) (privateKey ECCrefPrivateKey) {
 	privateKey = ECCrefPrivateKey{
 		Bits: uint(pucPrivateKey.bits),
-		K:    strings.TrimRight(string(C.GoBytes(unsafe.Pointer(&pucPrivateKey.D[0]), 32)), " "),
+		K:    strings.TrimRight(string(C.GoBytes(unsafe.Pointer(&pucPrivateKey.D[0]),64)), " "),
 	}
 	return privateKey
 }

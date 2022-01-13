@@ -1,6 +1,7 @@
 package sdf_go
 
 import (
+	"golang.org/x/text/encoding/simplifiedchinese"
 	"os"
 	"testing"
 )
@@ -91,13 +92,28 @@ func TestMain(m *testing.M)  {
 	os.Exit(m.Run())
 }
 
+func ConvertUTF8ToGBK(str string) string {
+	ret, err := simplifiedchinese.GBK.NewEncoder().String(str)
+	if err != nil {
+		return ""
+	}
+	return ret
+}
+
+func ConvertGBKToUTF8(str string) string {
+	ret, _ := simplifiedchinese.GBK.NewDecoder().String(str)
+	return ret
+}
 func TestSDFGetDeviceInfo(t *testing.T)  {
 
 	deviceInfo, err := ctx.SDFGetDeviceInfo(sessionHandle)
 	if err != nil {
 		t.Fatalf("Get device info error:%s\n",err.Error())
 	}
-	t.Log(deviceInfo)
+	t.Log("IssuerName: " + ConvertGBKToUTF8(deviceInfo.IssuerName))
+	t.Log("DeviceName: " + ConvertGBKToUTF8(deviceInfo.DeviceName))
+	t.Log("DeviceSerial: " + deviceInfo.DeviceSerial)
+	t.Logf("DeviceVersion: %d", deviceInfo.DeviceVersion)
 }
 
 func TestSDFGenerateRandom(t *testing.T) {
@@ -105,7 +121,7 @@ func TestSDFGenerateRandom(t *testing.T) {
 	if err != nil {
 		t.Fatalf("generate random error :%s\n",err.Error())
 	}
-	t.Log(string(bytes))
+	t.Log(bytes)
 }
 
 func TestGenerateKeyPair_RSA(t *testing.T)  {
@@ -113,15 +129,25 @@ func TestGenerateKeyPair_RSA(t *testing.T)  {
 	if err != nil {
 		t.Fatalf("Generate key pair error:%s\n",err.Error())
 	}
-	t.Log(pubKey)
+	t.Log("publicKey:")
+	t.Logf("Bits:%d", pubKey.Bits)
+	t.Log("Pub M:" + pubKey.M)
+	t.Log("Pub E:" + pubKey.E)
 	t.Log(privateKey)
 }
 
 func TestGenerateKeyPair_ECC(t *testing.T) {
-	pubKey, privateKey, err := ctx.SDFGenerateKeyPair_ECC(sessionHandle, SGD_SM2_3, 256)
+	// 生成椭圆曲线加密算法
+	pubKey, priv, err := ctx.SDFGenerateKeyPair_ECC(sessionHandle, SGD_SM2_3, 256)
 	if err != nil {
 		t.Fatalf("Generate ECC key pair error:%s\n",err.Error())
 	}
-	t.Log(pubKey)
-	t.Log(privateKey)
+	t.Log("pubKey:")
+	t.Logf("Bits: %d", pubKey.Bits)
+	t.Logf("X: %v", []byte(pubKey.X))
+	t.Logf("Y: %v", []byte(pubKey.Y))
+
+	t.Log("privateKey:")
+	t.Logf("Bits: %d", priv.Bits)
+	t.Logf("D: %v", []byte(priv.K))
 }
