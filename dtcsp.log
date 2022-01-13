@@ -30,3 +30,5 @@ Time -- Thu Dec 30 15:18:16 2021
   File: ../source/ECC.c; Line: 436 
 DTCSP_ECC_GenKeyPair:Dialog GEN_ECC_PAIR_H Card 0; ErrCode 0xe001.
 
+File ../source/ECC.c; Line 1227  # DTCSP_SCE_Sign: nInDataMesLen is Error!
+File ../source/ECC.c; Line 1227  # DTCSP_SCE_Sign: nInDataMesLen is Error!

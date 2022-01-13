@@ -2,6 +2,7 @@ package sdf_go
 
 import (
 	"crypto/rand"
+	"github.com/stretchr/testify/assert"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"os"
 	"testing"
@@ -177,4 +178,25 @@ func DoErr(t *testing.T, err error) {
 	if err != nil {
 		t.Fatal(err)
 	}
+}
+
+func TestSignAndVerify(t *testing.T) {
+	eccPub, eccPri, err := ctx.SDFGenerateKeyPair_ECC(sessionHandle, SGD_SM2_1, 256)
+	assert.NoError(t,err)
+
+	origin := make([]byte,0,1024)
+	rand.Read(origin)
+
+	_, err = ctx.SDFHashInit(sessionHandle, SGD_SM3, nil, 0)
+	assert.NoError(t,err)
+	err = ctx.SDFHashUpdate(sessionHandle, origin, uint(1024))
+	assert.NoError(t,err)
+	sum, _, err := ctx.SDFHashFinal(sessionHandle)
+	assert.NoError(t,err)
+
+	sig, err := ctx.SDFExternalSign_ECC(sessionHandle, SGD_SM2_1, eccPri, sum, uint(32))
+	assert.NoError(t,err)
+
+	err = ctx.SDFExternalVerify_ECC(sessionHandle, SGD_SM2_1, eccPub, sum, uint(32), sig)
+	assert.NoError(t,err)
 }

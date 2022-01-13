@@ -54,7 +54,7 @@ int DTCSPGetDTCSPVersion(DTCSP_UCHAR_PTR pVersion)
  */
 import "C"
 import (
-	sdf_go "github.com/sdf-go"
+	sdf_go "github.com/Ruadgedy/sdf-go"
 	"unsafe"
 )
 

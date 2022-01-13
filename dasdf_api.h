@@ -168,7 +168,7 @@ typedef struct ECCCipher_st
 	unsigned char y[ECCref_MAX_LEN]; 
 	unsigned char M[32];
 	unsigned int  L;                   //密文长度
-	unsigned char C[1];   //密文数据 kxy 20140328
+	unsigned char C[L];   //密文数据 kxy 20140328
 } ECCCipher;
 
 
