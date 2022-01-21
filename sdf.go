@@ -253,6 +253,7 @@ SGD_RV SDFExternalEncrypt_ECC(SGD_HANDLE hSessionHandle,SGD_UINT32 uiAlgID,ECCre
 //39. 外部密钥ECC解密
 SGD_RV SDFExternalDecrypt_ECC(SGD_HANDLE hSessionHandle,SGD_UINT32 uiAlgID,ECCrefPrivateKey *pucPrivateKey,ECCCipher *pucEncData,SGD_UCHAR_PRT *pucData,SGD_UINT32  *puiDataLength)
 {
+	*puiDataLength = 1024;
 	*pucData = calloc(*puiDataLength, sizeof(SGD_UCHAR));
 	return SDF_ExternalDecrypt_ECC(hSessionHandle,uiAlgID,pucPrivateKey,pucEncData,*pucData,puiDataLength);
 }

@@ -1,6 +1,12 @@
 package sdf_go
 /*
 #include "dasdf_api.h"
+
+//void MallocCipher(ECCCipher *cipher,unsigned int length)
+//{
+//	//cipher = (ECCCipher*)malloc(sizeof(ECCCipher)+length);
+//	cipher->C = (unsigned char *)calloc(length, sizeof(unsigned char));
+//}
 */
 import "C"
 import (
@@ -131,6 +137,7 @@ func ConvertToECCrefPrivateKeyGo(pucPrivateKey C.ECCrefPrivateKey) (privateKey E
 }
 
 func ConvertToECCCipherC(encData ECCCipher) (pucEncData C.ECCCipher) {
+	//C.MallocCipher(&pucEncData,C.uint(encData.L))
 	for i := 0; i < len(encData.X); i++ {
 		pucEncData.x[i] = C.SGD_UCHAR(encData.X[i])
 	}

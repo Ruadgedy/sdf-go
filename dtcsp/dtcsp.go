@@ -21,7 +21,7 @@ void *pContext;
 // 1.初始化DTCSP接口库
 int DTCSPInit(DTCSP_VOID_PTR pContext, DTCSP_CHAR_PTR pConfigureFileName,DTCSP_UCHAR_PTR pPassWD)
 {
-	rv = DTCSP_Init(&pContext, pConfigureFileName, pPassWD);
+	rv = DTCSP_Init(&pContext, pConfigureFileName, NULL);
 	if(rv != DTCSP_SUCCESS)
 	{
 		printf("Init DTCSP API error\n");

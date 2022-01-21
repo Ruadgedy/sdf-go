@@ -200,3 +200,18 @@ func TestSignAndVerify(t *testing.T) {
 	err = ctx.SDFExternalVerify_ECC(sessionHandle, SGD_SM2_1, eccPub, sum, uint(32), sig)
 	assert.NoError(t,err)
 }
+
+func TestEncAndDec(t *testing.T) {
+	eccPub, eccPri, err := ctx.SDFGenerateKeyPair_ECC(sessionHandle, SGD_SM2_3, 256)
+	assert.NoError(t,err)
+
+	origin := make([]byte,2048)
+	rand.Read(origin)
+
+	cipher, err := ctx.SDFExternalEncrypt_ECC(sessionHandle, SGD_SM2_3, eccPub, origin, uint(1024))
+	assert.NoError(t,err)
+
+	plain, _, err := ctx.SDFExternalDecrypt_ECC(sessionHandle, SGD_SM2_3, eccPri, cipher)
+	assert.NoError(t,err)
+	t.Log(plain)
+}
