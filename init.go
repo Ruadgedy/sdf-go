@@ -7,7 +7,7 @@ import (
 
 var Cx = Ctx{}
 var GlobalDevice DeviceHandleType
-var GlobalSession SessionHandleTyep
+var GlobalSession SessionHandleType
 var err error
 
 // init initializes the device handle
