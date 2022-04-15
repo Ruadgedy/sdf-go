@@ -2,6 +2,7 @@ package sdf_go
 
 /*
 #cgo linux LDFLAGS: -ldasdf -ldtcsp -ldtrtl -lpthread -ldl
+#cgo darwin LDFLAGS: -ldl
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
